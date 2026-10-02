@@ -24,14 +24,14 @@ st.set_page_config(page_title="AI & Coding Classroom", page_icon="🎓", layout=
 # --------------------------------------------------------------------------
 DB_PATH = os.environ.get("CLASSROOM_DB", "classroom.db")
 
-# SHA-256 of the teacher password (same hash as the HTML version, so the
-# existing password keeps working). Override with st.secrets / env var:
+# SHA-256 of the teacher password. Override with st.secrets / env var:
 #   TEACHER_PW_HASH = "<sha256 hex>"
-DEFAULT_PW_HASH = "2f789bd72218eb389fa8a28cd3ab293026c48f56e36328b745eb9138b00ba75a"
+DEFAULT_PW_HASH = "862bbdc3bfc6180b8f78af840624b082120d76b70606f0ff0eb00025bf331617"
 
 
 def teacher_hash() -> str:
     try:
+        
         return st.secrets["TEACHER_PW_HASH"]
     except Exception:
         return os.environ.get("TEACHER_PW_HASH", DEFAULT_PW_HASH)
